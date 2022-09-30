@@ -16,38 +16,46 @@
 
 int main(){
 
-    char my_string[BOUNDS], letter = '\0', is_pal = 0;
+    char my_string[BOUNDS], letter = '\0', is_palindrome = 0;
     int offset = 0, tailset = 0;
+
+    /* use getchar() to safely populate our string to check, terminating the
+     * string with a NULL ('\0') character. 
+     */
 
     while ( (letter != '\n') && (offset < (BOUNDS - 1)) ){
 
         letter = my_string[offset++] = getchar();
 
     }
-
     my_string[offset] = '\0';
+
+    /* reset the offset to the front of the string 
+     */
 
     offset = 0;
 
-    /* check input for palindromeness */
-    /* find the end */
-
+    /* find the end of the string and ensure tailset points to the last character
+     * before the terminating NULL.
+     */
 
     while ( my_string[tailset++] != '\0');
-        tailset -= 3;
+    tailset -= 3;
 
-    /* compare end to front characters until they meet in middle */
+    /* compare end to front characters moving the offsets until they meet in middle 
+     */
     
     while ( offset < tailset ){
 
         if ( my_string[offset++] != my_string[tailset--]) 
-            is_pal = 1;
+            is_palindrome = 1;
 
     }
 
-    /* if not compares fail it is a palindrome */
+    /* if no compares fail then it is a palindrome, print result
+     */
 
-    if ( is_pal == 0 ) 
+    if ( is_palindrome == 0 ) 
         printf ("=%s is a palindrome.", my_string);
     else 
         printf ("=%s is not a palindrome.", my_string); 
