@@ -15,7 +15,7 @@
 SRC := *.c 
 OBJ := $(SRC:.c=.o)
 BIN := output
-CFLAGS ?= -ansi -pedantic -Wall 
+CFLAGS += -ansi -pedantic -Wall 
 
 # Recipes
 # Recipes follow this pattern:
@@ -26,10 +26,10 @@ CFLAGS ?= -ansi -pedantic -Wall
 #
 
 $(BIN): $(OBJ)
-	gcc $^ $(CFLAGS) -o $(BIN)
+	gcc $^ -o $(BIN)
 
 %.o: %.c %.h
 	gcc -c $^ $(CFLAGS)
 
 clean:
-	rm *.o output
+	rm *.o $(BIN)
