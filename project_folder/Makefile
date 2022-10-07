@@ -1,5 +1,11 @@
-# Sample generic makefile (Makefile or makefile are both found by gcc)
+# Simple generic makefile (Makefile or makefile are both found by gcc)
 # Prof. Frank Emanuel (2022)
+
+# Note that a generic makefile like this will attempt to compile
+# and link ALL of the .c and .h files in the directory. This is 
+# not likely what you want to do in your lab folder. Instead do 
+# each lab project in its own folder and copy this makefile into 
+# that folder for running. 
 
 # Variables 
 # Note: = is assign; := is expand before assigning; += is append;
