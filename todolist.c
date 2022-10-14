@@ -24,6 +24,8 @@ struct todoitem
 
 void printlistitems( struct todoitem *, int );
 
+/* Hey here is a comment */
+
 int main(){
 
     /* declarations - dynamic array */
