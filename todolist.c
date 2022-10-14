@@ -39,8 +39,13 @@ void printlistitems( struct todoitem * items, int item_count ){
 
 int main(){
 
-    /* declarations - replace test array with a dynamic array */
+    /* declarations - dynamic array */
+
+/*     int num_list_items = 0;
+    struct todoitem * list_of_tasks = NULL; */
     
+    /* testing declarations (clean up at the end) */
+
     struct todoitem single_task[] = { {1, 1, "hello"}, {2, 1, "goodbye"}, {3, 3, "ok"} };
     
     /* instructions */
