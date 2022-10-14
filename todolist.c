@@ -22,20 +22,7 @@ struct todoitem
 
 };
 
-void printlistitems( struct todoitem * items, int item_count ){
-
-    /* prints all of the list */
-
-    int item_offset = 0;
-
-    for ( ;item_count > 0; item_count--, item_offset++){
-        printf("%d: %s (%d)\n", 
-            items[item_offset].task_id, items[item_offset].task_label, 
-            items[item_offset].priority_level);
-    }
-
-    return;
-}
+void printlistitems( struct todoitem *, int );
 
 int main(){
 
@@ -57,4 +44,17 @@ int main(){
     return 0;
 }
 
+void printlistitems( struct todoitem * items, int item_count ){
 
+    /* prints all of the list */
+
+    int item_offset = 0;
+
+    for ( ;item_count > 0; item_count--, item_offset++){
+        printf("%d: %s (%d)\n", 
+            items[item_offset].task_id, items[item_offset].task_label, 
+            items[item_offset].priority_level);
+    }
+
+    return;
+}
