@@ -97,17 +97,18 @@ int get_length ( const char * to_test ){
 
 
 /* reads from keypress, doesn't echo */
+
 int getch(void)
 {
 
-/*     copied from https://stackoverflow.com/questions/3276546/how-to-implement-getch-function-of-c-in-linux
+    /* copied from https://stackoverflow.com/questions/3276546/how-to-implement-getch-function-of-c-in-linux
     to solve a persistent problem. Need documentation for termios.h */
     
     struct termios oldattr, newattr;
     int ch;
     tcgetattr( STDIN_FILENO, &oldattr );
     newattr = oldattr;
-    newattr.c_lflag &= ~( ICANON | ECHO );
+    newattr.c_lflag &= ~( ICANON | ECHO ); /* bitwise operation to set binary flags */
     tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
     ch = getchar();
     tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
