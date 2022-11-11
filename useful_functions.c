@@ -9,17 +9,31 @@
  * 
  */
 
+#include <termios.h>
+#include <unistd.h>
 #include <stdio.h>
 
 #define STRINGSIZE 32
 
 int get_string( int bounds, char * string );
 int get_length( const char * string );
+int getch(void);
+/* int getachar( void ); */
 
 int main(){
 
     char a_word[ STRINGSIZE ];
-    int length;
+    int length, character;
+
+    printf( "hit any key\n" );
+    character = getch();
+
+    printf( "%c is the character\n", character);
+
+    printf( "hit any key\n" );
+    character = getch();
+
+    printf( "%c is the character\n", character);
 
     printf( "Just checking stuff out: \n" );
 
@@ -69,4 +83,34 @@ int get_length ( const char * to_test ){
 
     return (count - 2);
 
+}
+
+/* int getachar( void ){
+
+    char c;
+
+    return ( read(0, &c, 1) == 1) ? (unsigned char) c: EOF;
+
+
+} */
+
+
+
+/* reads from keypress, doesn't echo */
+int getch(void)
+{
+
+/*     copied from https://stackoverflow.com/questions/3276546/how-to-implement-getch-function-of-c-in-linux
+    to solve a persistent problem. Need documentation for termios.h */
+    
+    struct termios oldattr, newattr;
+    int ch;
+    tcgetattr( STDIN_FILENO, &oldattr );
+    newattr = oldattr;
+    newattr.c_lflag &= ~( ICANON | ECHO );
+    tcsetattr( STDIN_FILENO, TCSANOW, &newattr );
+    ch = getchar();
+    tcsetattr( STDIN_FILENO, TCSANOW, &oldattr );
+    return ch;
+    
 }
