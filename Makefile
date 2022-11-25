@@ -9,6 +9,9 @@ a.out: printloop.o
 printloop.o: printloop.c
 	gcc -c $(CFLAGS) printloop.c 
 
+# b.out: printloop.c 
+# 	gcc $(CFLAGS) printloop.c -o b.out
+
 clean:
 	rm *.o a.out 
 
